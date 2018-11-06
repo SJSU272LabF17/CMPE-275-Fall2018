@@ -2,7 +2,8 @@ syntax = "proto3";
 
 package grpc;
 
-message Empty {
+message RequestFileList {
+ 	bool isClient=1;		// true then client else other team
 }
 
 message FileInfo {
@@ -60,7 +61,7 @@ service DataTransferService {
 	rpc UploadFile (stream FileUploadData) returns (FileInfo);
 
 	// Interteam request
-	rpc ListFiles (Empty) returns (FileList);
+	rpc ListFiles (RequestFileList) returns (FileList);
 }
 
 
